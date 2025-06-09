@@ -7,11 +7,48 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div class="container-centrado">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">¿Punta Fina o Gruesa?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Elegir la punta de tu Coffeejug es clave para el latte art que quieres lograr.</p>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <ion-item lines="none">
+        <ion-label>
+          <strong>Punta Fina:</strong> Ideal para detalles intrincados, líneas finas y diseños precisos como rosetas detalladas o cisnes con plumas definidas. Permite un flujo de leche más controlado y lento para mayor exactitud.
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          <strong>Punta Gruesa:</strong> Perfecta para formas más amplias, corazones robustos, tulipanes grandes y un flujo de leche más rápido. Facilita cubrir áreas más grandes rápidamente y crear contrastes más marcados.
+        </ion-label>
+      </ion-item>
+
+      <p class="ion-text-center">Considera el tipo de latte art que disfrutas hacer con más frecuencia para tomar tu decisión.</p>
+      <p class="ion-text-center">Visita <a href="https://www.coffejug/eligiendojarra" target="_blank" >la guía completa de CoffeeJug</a> para más detalles.</p>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+  <div class="container-centrado">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Ejemplos de diseño</ion-card-title>
+        <!-- agregar una imagen -->
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-label style="font-weight: 500;">Punta fina:</ion-label>
+        <img src="../../assets/img/latteart_fino_1.avif" alt="Latte Art Punta Fina" style="width: 100%; height: auto;">
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-label style="font-weight: 500;">Punta gruesa:</ion-label>
+        <img src="../../assets/img/latteart_grueso_1.avif" alt="Latte Art Punta Fina" style="width: 100%; height: auto;">
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
