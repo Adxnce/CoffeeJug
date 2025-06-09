@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"> 
+    <div style="height: 100%; display: flex; justify-content: center; align-items: center;">
+    <ion-card>
+      <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="firstName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="lastName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nivel de Educacion</ion-label>
+        <ion-select [(ngModel)]="nivelEducacion">
+          <ion-select-option value="option1">Enseñanza Media</ion-select-option>
+          <ion-select-option value="option2">Universitario</ion-select-option>
+          <ion-select-option value="option3">Tecnico-profesional</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha Nacimiento</ion-label>
+        <ion-item>  
+          <mat-form-field>
+            <mat-label>dd/mm/yyyy</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento">  
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> 
+          </mat-form-field>   
+        </ion-item>
+      </ion-item>
+      </ion-card-content>
+
+      <div style="padding: 16px;">
+        <ion-button (click)="registrar()"  expand="full" >Guardar Datos</ion-button> 
+      </div>
+      
+    </ion-card>
+   </div>
+</ion-content>
+
