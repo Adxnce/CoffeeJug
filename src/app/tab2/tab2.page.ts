@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class Tab2Page {
+
+  @ViewChild('popover') popover!: HTMLIonPopoverElement;
+
+  isOpen = false;
+
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
+  }
 
   constructor() {}
 

@@ -7,11 +7,114 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="container">
+
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Jarra fineMax v1</mat-card-title>
+        <mat-card-subtitle>Punta fina</mat-card-subtitle>
+      </mat-card-header >
+      <img mat-card-xl-image src="../../assets/img/fine_1.avif" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <div style="padding: 16px; text-align: center;">
+        <ion-button (click)="presentPopover($event)">Me gusta!</ion-button>
+          <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+            <ng-template>
+              <ion-content class="ion-padding">A nosotros igual nos gusta :D</ion-content>
+            </ng-template>
+          </ion-popover>
+      </div>
+      </mat-card>
+   
+   
+      <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Jarra fineMax v2</mat-card-title>
+        <mat-card-subtitle>Punta fina</mat-card-subtitle>
+      </mat-card-header >
+      <img mat-card-xl-image src="../../assets/img/fine_2.avif" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <div style="padding: 16px; text-align: center;">
+        <ion-button (click)="presentPopover($event)" style="width: 30%;" expand="fill" >Me gusta!</ion-button>
+      </div>
+    </mat-card>
+
+
+      <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Jarra fineMax v3</mat-card-title>
+        <mat-card-subtitle>Punta fina</mat-card-subtitle>
+      </mat-card-header >
+      <img mat-card-xl-image src="../../assets/img/fine_3.avif" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <div style="padding: 16px; text-align: center;">
+        <ion-button (click)="presentPopover($event)" style="width: 30%;" expand="fill" >Me gusta!</ion-button>
+      </div>
+    </mat-card>
+
+
+      <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Jarra roundedPro v1</mat-card-title>
+        <mat-card-subtitle>Punta redonda</mat-card-subtitle>
+      </mat-card-header >
+      <img mat-card-xl-image src="../../assets/img/rounder_1.avif" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <div style="padding: 16px; text-align: center;">
+        <ion-button (click)="presentPopover($event)" style="width: 30%;" expand="fill" >Me gusta!</ion-button>
+      </div>
+    </mat-card>
+
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Jarra rounderPro v2</mat-card-title>
+        <mat-card-subtitle>Punta redonda</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/img/rounder_2.avif" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <div style="padding: 16px; text-align: center;">
+        <ion-button (click)="presentPopover($event)" style="width: 30%;" expand="fill" >Me gusta!</ion-button>
+      </div>
+    </mat-card>
+
+  </div>
+    
+
+
 </ion-content>
