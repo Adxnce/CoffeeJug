@@ -1,4 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { DbserviceService } from '../service/dbservice.service';
+import { Jarra } from '../../app/service/jarra';
+
+
 
 @Component({
   selector: 'app-tab2',
@@ -6,17 +10,25 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['tab2.page.scss'],
   standalone: false,
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
 
   @ViewChild('popover') popover!: HTMLIonPopoverElement;
 
-  isOpen = false;
+  jarras: Jarra[] = [];
 
-  presentPopover(e: Event) {
-    this.popover.event = e;
-    this.isOpen = true;
+  constructor(private dbservice: DbserviceService) { }
+
+  ngOnInit() {
+    this.dbservice.dbState().subscribe((isReady) => {
+      if (isReady) {
+        this.dbservice.getJarras().then(data => {
+          this.jarras = data;
+        });
+      }
+    });
   }
 
-  constructor() {}
-
+  meGusta(jarra: Jarra){
+    this.dbservice.presentToast('Me gusta la jarra: ' + jarra.nombre);
+  }
 }

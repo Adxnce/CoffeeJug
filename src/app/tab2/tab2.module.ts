@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
+import { JarraCardComponent } from '../components/jarra-card/jarra-card.component';
 
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
@@ -22,6 +23,6 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     MatCardModule,
     MatButtonModule
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, JarraCardComponent]
 })
 export class Tab2PageModule {}

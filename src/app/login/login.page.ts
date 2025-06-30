@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { state } from '@angular/animations';
+import { DbserviceService } from '../service/dbservice.service';
+import { Usuario } from '../service/usuario';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class LoginPage implements OnInit {
   password: string = '';
 
   constructor(private router: Router, 
-              private alertController: AlertController  
+              private alertController: AlertController,
+              private DbserviceService: DbserviceService  
   ) { }
 
   ngOnInit() {
@@ -41,7 +44,7 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/registro']);
   }
 
-  ingresar(){
+  async ingresar(){
     if(!this.usuario){
       this.mostrarAlerta('El campo usuario es obligatorio');
       return;
@@ -58,7 +61,20 @@ export class LoginPage implements OnInit {
       this.mostrarAlerta('El campo contraseña debe tener entre 4 y 12 caracteres');
       return;
     }
-    // Si todos los campos son válidos, redirigir a la página de tabs
-    this.router.navigate(['/tabs/tab3'], {state: { usuario: this.usuario}});
+
+    try {
+      const usuarioEncontrado: Usuario | null = await this.DbserviceService.getUsuarioByUsuario(this.usuario);
+      if (usuarioEncontrado && usuarioEncontrado.password === this.password){
+        this.DbserviceService.presentToast('Bienvenido ' + usuarioEncontrado.firstname);
+        this.DbserviceService.setUsuarioActivo(usuarioEncontrado);
+        this.DbserviceService.presentToast('Bienvenido, ' + usuarioEncontrado.firstname);
+        this.router.navigate(['/tabs']);
+      }else {
+        this.mostrarAlerta('Usuario o contraseña incorrectos')};
+      }catch (error: any) {
+        this.mostrarAlerta('Error al verificar el usuario: ' + error.message);
+        console.error('Error al verificar el usuario:', error);
+      }
+    }
+
   }
-}

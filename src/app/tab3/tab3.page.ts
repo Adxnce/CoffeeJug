@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import { Usuario } from '../service/usuario';
+import { DbserviceService } from '../service/dbservice.service';
+import { Jarra } from '../service/jarra';
+import { Like } from '../service/like';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab3',
@@ -9,18 +14,21 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['tab3.page.scss'],
   standalone: false,
 })
-export class Tab3Page {
+export class Tab3Page implements OnInit {
 
-  usuario: any;
+  usuarioActivo: Usuario | null = null;
+  jarras: Jarra[] = [];
+  likes: Like[] = [];
 
-  constructor(private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-    
-    // Verificamos si la navegación actual tiene un 'state'
-    if (navigation?.extras.state) {
-      this.usuario = navigation.extras.state['usuario'];
-      console.log('¡Datos de usuario recibidos en Tab1Page!', this.usuario);
-    }
+  constructor(private dbservice: DbserviceService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(){
+    this.dbservice.getUsuarioActivo().subscribe(usuario => {
+      this.usuarioActivo = usuario;
+    });
   }
 
 

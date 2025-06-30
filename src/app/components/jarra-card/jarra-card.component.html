@@ -1,0 +1,17 @@
+<mat-card *ngIf="jarra" class="example-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ jarra.nombre }}</mat-card-title>
+      <mat-card-subtitle>{{ jarra.tipo_punta }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-xl-image [src]="jarra.img" alt="{{ jarra.nombre }}">
+  <mat-card-content>
+    <p>
+      {{ jarra.descripcion }}
+    </p>
+  </mat-card-content>
+  <div style="padding: 16px; text-align: center;">
+    <ion-button (click)="clickMeGusta()">Me gusta!</ion-button>
+  </div>
+</mat-card>
+
