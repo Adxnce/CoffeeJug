@@ -121,6 +121,11 @@ export class DbserviceService {
     this.usuarioActivo.next(usuario);  
   }
 
+  logout(){
+    this.usuarioActivo.next(null);
+    this.presentToast("Sesión cerrada correctamente");
+  }
+
 
   //CRUD
   // CREATE
@@ -247,6 +252,25 @@ export class DbserviceService {
       return null;
 
     }
+  }
+
+  async getJarrasFavoritas(usuarioId: number): Promise<Jarra[]> {
+    const sql = `SELECT j.* FROM jarras j
+                INNER JOIN likes l ON j.id = l.jarra_id
+                WHERE l.usuario_id = ?`;
+    const jarras: Jarra[] = [];
+    try {
+      const res = await this.database.executeSql(sql, [usuarioId]);
+      for (let i = 0; i < res.rows.length; i++) {
+        let item = res.rows.item(i);
+        jarras.push(new Jarra(item.nombre, item.tipo_punta, item.img, item.descripcion, item.id));
+      }
+      return jarras;
+    } catch (e) {
+      this.presentToast("Error al obtener las jarras favoritas: " + e);
+      return [];
+    }
+
   }
 
 

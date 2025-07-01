@@ -18,20 +18,31 @@ export class Tab3Page implements OnInit {
 
   usuarioActivo: Usuario | null = null;
   jarras: Jarra[] = [];
-  likes: Like[] = [];
 
   constructor(private dbservice: DbserviceService,
-              private router: Router,
-              private activatedRoute: ActivatedRoute
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(){
+  
     this.dbservice.getUsuarioActivo().subscribe(usuario => {
       this.usuarioActivo = usuario;
-    });
+    })
   }
 
+  ionViewWillEnter() {
+    if (this.usuarioActivo && this.usuarioActivo.id){
+      this.dbservice.getJarrasFavoritas(this.usuarioActivo.id).then(data =>{
+        this.jarras = data;
+      }).catch(error => {
+        console.error('Error al obtener las jarras favoritas:', error);
+      });
+    }
+  }
 
-
-
+  logout(){
+    this.dbservice.logout();
+    this.router.navigate(['/login']);
+  }
 }

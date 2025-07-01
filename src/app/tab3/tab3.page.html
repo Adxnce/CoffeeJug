@@ -38,6 +38,39 @@
         </div>
       </ion-card-content>
     </ion-card>
+
+    <ion-card class="card-container" style="margin-top: 0;">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>Mis Jarras Favoritas</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div *ngIf="jarras.length === 0" class="ion-text-center">
+          <p>No tienes jarras favoritas.</p>
+        </div>
+        
+      <ion-item *ngFor="let jarra of jarras">
+        <ion-thumbnail slot="start">
+          <img [src]="jarra.img" [alt]="jarra.nombre">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ jarra.nombre }}</h2>
+          <p>{{ jarra.tipo_punta }}</p>
+        </ion-label>
+      </ion-item>
+        
+        <div style="padding: 16px;">
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+      <!-- <ion-card class="card-container"> -->
+        <ion-button (click)="logout()" expand="block" color="danger" style="margin: 16px;">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>
+          Cerrar Sesión
+        </ion-button>
+      <!-- </ion-card> -->
+
   </div>
 
 </ion-content>
