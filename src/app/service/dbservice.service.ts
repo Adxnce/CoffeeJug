@@ -353,7 +353,7 @@ export class DbserviceService {
     let sql = `DELETE FROM usuarios WHERE id = ?`
     return this.database.executeSql(sql, [id]).then(res => {
       this.presentToast("Usuario eliminado correctamente");
-    }).then(res => {
+    }).catch(res => {
       this.presentToast("Error al eliminar el usuario");
     });
   }
@@ -362,8 +362,8 @@ export class DbserviceService {
     let sql = `DELETE FROM jarras WHERE id = ?`
     return this.database.executeSql(sql, [id]).then(res => {
       this.presentToast("Jarra eliminado correctamente");
-    }).then(res => {
-      this.presentToast("Error al eliminar el usuario");
+    }).catch(error => {
+      this.presentToast("Error al eliminar la jarra");
     });
   }
 
@@ -371,8 +371,8 @@ export class DbserviceService {
     let sql = `DELETE FROM likes WHERE jarra_id = ?`
     return this.database.executeSql(sql, [jarra_id]).then(res => {
       this.presentToast("Like eliminado correctamente");
-    }).then(res => {
-      this.presentToast("Error al eliminar el usuario");
+    }).catch(error => {
+      this.presentToast("Error al eliminar el like");
     });
   }
 

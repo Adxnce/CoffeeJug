@@ -57,6 +57,9 @@
           <h2>{{ jarra.nombre }}</h2>
           <p>{{ jarra.tipo_punta }}</p>
         </ion-label>
+        <ion-button fill="clear" (click)="borrarJarra(jarra)" slot="end">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
       </ion-item>
         
         <div style="padding: 16px;">

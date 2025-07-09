@@ -41,6 +41,11 @@ export class Tab3Page implements OnInit {
     }
   }
 
+  borrarJarra(jarra: Jarra){
+    this.dbservice.deleteLike(jarra.id!)
+    this.jarras = this.jarras.filter(j => j.id !== jarra.id);
+  }
+
   logout(){
     this.dbservice.logout();
     this.router.navigate(['/login']);
