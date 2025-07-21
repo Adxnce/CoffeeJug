@@ -14,13 +14,21 @@ export class Tab1Page {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts?_limit=3')
-      .subscribe(data => {
-        this.posts = data;
-      }, error => {
-        console.error('Error fetching posts:', error);
-      });
+    this.API();
   }
+
+  async API(){
+    try {
+      await this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts?_limit=3')
+        .subscribe(data => {
+          this.posts = data;
+        }, error => {
+          console.error('Error fetching posts:', error);
+        });
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+    }
 
 }
 
